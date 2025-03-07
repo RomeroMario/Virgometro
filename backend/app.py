@@ -4,9 +4,10 @@ from models import *  # Importa tus modelos aquí, por ejemplo, Usuario, Product
 from schemas import *
 from db import get_db, refresh
 from soporte import genHex
+import os,uvicorn
 
 refresh()
-
+port = int(os.getenv("PORT", 8000))
 app = FastAPI()
 
 @app.get("/juegos")
@@ -49,3 +50,5 @@ def update_juego(juego_id: int, juego: CrearJuego, db: Session = Depends(get_db)
         raise HTTPException(status_code=404, detail="Juego no encontrado")
 
 
+if __name__ == "__main__":
+    uvicorn.run("app:app", host="0.0.0.0", port=port, reload=True)
