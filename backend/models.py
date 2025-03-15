@@ -9,8 +9,6 @@ class Juego(Base):
     id = Column(Integer, primary_key=True, index=True)
     codigo = Column(String, unique=True, index=True)
     jugadores = Column(String)
-    cat_actual = Column(Integer)
-    jug_actual = Column(String)
     categorias = relationship("Categoria", back_populates="juego")
 
 class Categoria(Base):
@@ -28,10 +26,10 @@ class Puntaje(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     id_juego= Column(Integer, ForeignKey('juegos.id'))
-    nombreJugador = Column(String) 
     categoria_id = Column(Integer, ForeignKey('categorias.id'))
+    jugadorCalificado= Column(String) 
+    nombreCalificador= Column(String)
     puntaje = Column(Integer)
-
     categoria = relationship("Categoria", back_populates="puntajes")
 
 Categoria.puntajes = relationship("Puntaje", back_populates="categoria")

@@ -10,4 +10,9 @@ class CrearJuego(BaseModel):
     jugadores: List[str]
     
 
+class ActualizarJuego(BaseModel):
+    jugadorActual: str
+    catActual: int
+    
+
 
