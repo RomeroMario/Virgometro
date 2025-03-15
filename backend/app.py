@@ -124,10 +124,10 @@ async def websocket_endpoint(websocket: WebSocket, codigo: str,nombre: str,db: S
                     break  # Salir del bucle, ya no hay más votaciones
 
     except WebSocketDisconnect:
-        jugadores_conectados[codigo].remove(player_name)
+        if player_name in jugadores_conectados[codigo]:
+            jugadores_conectados[codigo].remove(player_name)
         if not jugadores_conectados[codigo]:
             del jugadores_conectados[codigo]
-            del conexiones_ws[codigo]
     finally:
         await websocket.close()
 async def send_finish(codigo,db):
