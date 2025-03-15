@@ -5,7 +5,7 @@ from models import *
 from schemas import *
 from db import get_db, refresh
 from soporte import genHex
-import os
+import os,uvicorn
 from collections import defaultdict
 
 print("Iniciando")
@@ -190,3 +190,7 @@ def verificar_todos_votaron(codigo, jugadores_conectados, puntajes, jugador, cat
     if clave in puntajes:
         return jugadores_conectados == puntajes[clave]
     return False
+
+
+if __name__ == "__main__":
+     uvicorn.run("app:app", host="0.0.0.0", port=port, reload=True)
