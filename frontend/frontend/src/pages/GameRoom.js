@@ -15,7 +15,7 @@ export default function GameRoom() {
 
   useEffect(() => {
     if (isNameSet) {
-      const socket = new WebSocket(`ws://localhost:8000/ws/${codigo}/${playerName}`);
+      const socket = new WebSocket(`https://virgometro.onrender.com/ws/${codigo}/${playerName}`);
       socket.onopen = () => {
         setIsWsOpen(true);  // Marcar como abierta la conexión cuando esté lista
       };

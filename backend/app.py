@@ -8,7 +8,7 @@ from soporte import genHex
 import os
 from collections import defaultdict
 
-
+print("Iniciando")
 refresh()
 port = int(os.getenv("PORT", 8000))
 app = FastAPI()

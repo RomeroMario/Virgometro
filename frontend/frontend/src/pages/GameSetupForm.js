@@ -25,7 +25,7 @@ export default function GameSetupForm() {
   const createGame = async () => {
     setConfirmacion('¡Partida creada con éxito!');
     const jugadores = players.split('\n').map(p => p.trim()).filter(p => p);
-    const response = await fetch('http://localhost:8000/newgame', {
+    const response = await fetch('https://virgometro.onrender.com/newgame', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ categorias: categories, jugadores })
